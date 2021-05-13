@@ -74,7 +74,7 @@ def main(start ,end):
 
         # Body
         ws.column_dimensions['A'].width = 4
-        ws.column_dimensions['B'].width = 10
+        ws.column_dimensions['B'].width = 14
         ws.column_dimensions['C'].width = 27
         ws.column_dimensions['D'].width = 15
         ws.column_dimensions['E'].width = 15
@@ -83,7 +83,7 @@ def main(start ,end):
         ws.column_dimensions['H'].width = 25
         ws.column_dimensions['I'].width = 18
         ws.column_dimensions['J'].width = 18
-        ws.column_dimensions['K'].width = 9
+        ws.column_dimensions['K'].width = 13
         ws.column_dimensions['L'].width = 10
         columns = ['STT', 'Problem ID', 'Title', 'Severity Level', 'Impact Level', 'Affected', 'Impacted', 'Root cause', 'Start time', 'End time', 'Duration', 'Status']
         
