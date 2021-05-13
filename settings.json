@@ -1,0 +1,10 @@
+{
+    "dynatrace": {
+        "url": "https://mpu981.dynatrace-managed.com/e/553057c0-b8c9-48a8-8c2c-cbb38e61015b",
+        "api-token": "QWoUsJg-RFGJrYO6zX22k"
+    },
+    "output_file": {
+        "header": "DYNATRACE PROBLEM REPORT",
+        "file_name": "problem.xlsx"
+    }
+}
