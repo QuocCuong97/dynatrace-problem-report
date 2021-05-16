@@ -4,7 +4,8 @@
         "api-token": "QWoUsJg-RFGJrYO6zX22k"
     },
     "output_file": {
-        "header": "DYNATRACE PROBLEM REPORT",
-        "file_name": "problem.xlsx"
+        "title": "DYNATRACE PROBLEM REPORT",
+        "output_folder": "",
+        "file_name_prefix": "problem.xlsx"
     }
 }

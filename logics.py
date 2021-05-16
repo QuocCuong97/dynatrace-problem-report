@@ -1,4 +1,3 @@
-import json
 import time
 from datetime import datetime
 
@@ -7,16 +6,11 @@ from openpyxl import Workbook
 from openpyxl.drawing.image import Image
 from openpyxl.styles import Alignment, Border, Font, Side
 
+from tool import load_from_json
 
-def load_settings(file):
-    op = open(file, 'r')
-    data = op.read()
-    dic = json.loads(data)
-    op.close()
-    return dic
 
 def main(start ,end):
-    settings = load_settings('settings.json')
+    settings = load_from_json('settings.json')
 
     def get_list_problems():
         output = requests.get(settings['dynatrace']['url'] + '/api/v2/problems?from={}&to={}&pageSize=500'.format(start, end), \
@@ -38,7 +32,7 @@ def main(start ,end):
         ws['A3'].border = Border(left=wbd, top=wbd, right=wbd, bottom=wbd)
         
         ws.merge_cells('B1:C3')
-        img = Image('dynatrace_logo.png')
+        img = Image('img\logo_dynatrace_for_sheet.png')
         ws.add_image(img, 'B1')
         ws['B1'].border = Border(left=wbd, top=wbd, right=wbd)
         ws['C2'].border = Border(left=wbd, top=wbd, right=wbd)
@@ -48,7 +42,7 @@ def main(start ,end):
         ws.merge_cells('D1:L2')
         ws['D1'].font = Font(bold=True, size=13)
         ws['D1'].alignment = Alignment(horizontal='center', vertical="center")
-        ws['D1'] = settings['output_file']['header']
+        ws['D1'] = settings['output_file']['title']
         ws['D1'].border = Border(left=wbd, top=wbd, right=wbd)
         ws.row_dimensions[1].height = 25
         
@@ -77,7 +71,7 @@ def main(start ,end):
         ws.column_dimensions['B'].width = 14
         ws.column_dimensions['C'].width = 27
         ws.column_dimensions['D'].width = 15
-        ws.column_dimensions['E'].width = 15
+        ws.column_dimensions['E'].width = 16
         ws.column_dimensions['F'].width = 8
         ws.column_dimensions['G'].width = 30
         ws.column_dimensions['H'].width = 25
@@ -135,9 +129,9 @@ def main(start ,end):
                 cell.alignment = Alignment(vertical="center", wrapText=True)
                 cell.border = Border(left=bd, top=bd, right=bd, bottom=bd)
                 
-        wb.save(filename=settings['output_file']['file_name'])
+        wb.save(filename=settings['output_file']['file_name_prefix'])
 
     list_problems = get_list_problems()
     export_report(list_problems)
 
-main("now-30d", "now")
+# main("now-30d", "now")
