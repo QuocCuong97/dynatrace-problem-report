@@ -6,7 +6,7 @@ from openpyxl import Workbook
 from openpyxl.drawing.image import Image
 from openpyxl.styles import Alignment, Border, Font, Side
 
-from tool import load_from_json
+from common import load_from_json
 
 
 def main(start ,end):
@@ -133,5 +133,3 @@ def main(start ,end):
 
     list_problems = get_list_problems()
     export_report(list_problems)
-
-# main("now-30d", "now")

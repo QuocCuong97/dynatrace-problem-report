@@ -96,7 +96,7 @@ class Ui_Dialog(object):
 
 
 def show_dialog():
-    from tool import load_from_json, export_to_json
+    from common import load_from_json, export_to_json
     dlg = QtWidgets.QDialog()
     ui = Ui_Dialog()
     ui.setupUi(dlg)

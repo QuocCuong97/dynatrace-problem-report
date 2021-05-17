@@ -233,6 +233,7 @@ class Ui_MainWindow(object):
 
     def methods(self):
         import settings, about, logics
+        from common import timestring_handle
         
         def show_success_msg():
             msg = QtWidgets.QMessageBox()
@@ -246,11 +247,13 @@ class Ui_MainWindow(object):
             msg.exec_()
 
         def get_report():
+            choice = self.comboBox.currentText()
+            preset = timestring_handle(choice)
             try:
-                logics.main("now-30d", "now")
+                logics.main(preset["api_from"], preset["api_to"])
                 show_success_msg()
-            except:
-                pass
+            except Exception as ex:
+                print(ex)
             
         self.actionSettings_2.triggered.connect(settings.show_dialog)
         self.actionAbout.triggered.connect(about.show_dialog)
