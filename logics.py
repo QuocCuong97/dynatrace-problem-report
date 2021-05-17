@@ -9,7 +9,7 @@ from openpyxl.styles import Alignment, Border, Font, Side
 from common import load_from_json
 
 
-def main(start ,end):
+def main(start ,end, report_from, report_to):
     settings = load_from_json('settings.json')
 
     def get_list_problems():
@@ -62,7 +62,7 @@ def main(start ,end):
         ws['L2'].border = Border(left=wbd, top=wbd, right=wbd, bottom=wbd)
         ws['L4'].border = Border(left=wbd, top=wbd, right=wbd)
         ws['D3'] = "Total: {} problems\
-                             (from {} to {})".format(len(problems), start, end)
+                             (from {} to {})".format(len(problems), report_from, report_to)
 
         ws.merge_cells('A4:L4')
 

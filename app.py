@@ -35,6 +35,7 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.tabWidget.setFont(font)
         self.tabWidget.setAutoFillBackground(False)
+        self.tabWidget.setTabPosition(QtWidgets.QTabWidget.North)
         self.tabWidget.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.tabWidget.setElideMode(QtCore.Qt.ElideLeft)
         self.tabWidget.setUsesScrollButtons(False)
@@ -61,6 +62,7 @@ class Ui_MainWindow(object):
         self.label_3 = QtWidgets.QLabel(self.tab_1)
         self.label_3.setGeometry(QtCore.QRect(170, 70, 61, 31))
         font = QtGui.QFont()
+        font.setPointSize(9)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
@@ -74,14 +76,16 @@ class Ui_MainWindow(object):
         self.label_4 = QtWidgets.QLabel(self.tab_1)
         self.label_4.setGeometry(QtCore.QRect(170, 130, 51, 21))
         font = QtGui.QFont()
+        font.setPointSize(9)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.pushButton = QtWidgets.QPushButton(self.tab_1)
-        self.pushButton.setGeometry(QtCore.QRect(250, 190, 93, 28))
+        self.pushButton.setGeometry(QtCore.QRect(250, 190, 91, 41))
         font = QtGui.QFont()
+        font.setPointSize(9)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
@@ -110,6 +114,7 @@ class Ui_MainWindow(object):
         self.label_5 = QtWidgets.QLabel(self.tab_2)
         self.label_5.setGeometry(QtCore.QRect(130, 40, 61, 31))
         font = QtGui.QFont()
+        font.setPointSize(9)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
@@ -118,6 +123,7 @@ class Ui_MainWindow(object):
         self.label_6 = QtWidgets.QLabel(self.tab_2)
         self.label_6.setGeometry(QtCore.QRect(130, 90, 51, 31))
         font = QtGui.QFont()
+        font.setPointSize(9)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
@@ -126,14 +132,16 @@ class Ui_MainWindow(object):
         self.label_7 = QtWidgets.QLabel(self.tab_2)
         self.label_7.setGeometry(QtCore.QRect(130, 140, 51, 31))
         font = QtGui.QFont()
+        font.setPointSize(9)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
         self.pushButton_2 = QtWidgets.QPushButton(self.tab_2)
-        self.pushButton_2.setGeometry(QtCore.QRect(240, 210, 93, 28))
+        self.pushButton_2.setGeometry(QtCore.QRect(240, 200, 91, 41))
         font = QtGui.QFont()
+        font.setPointSize(9)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
@@ -141,12 +149,6 @@ class Ui_MainWindow(object):
         self.pushButton_2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.pushButton_2.setObjectName("pushButton_2")
         self.tabWidget.addTab(self.tab_2, "")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(630, 430, 191, 41))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(".\\design\\../img/power_by_fis.png"))
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(300, 10, 211, 61))
         self.label_2.setText("")
@@ -233,7 +235,7 @@ class Ui_MainWindow(object):
 
     def methods(self):
         import settings, about, logics
-        from common import timestring_handle
+        from common import timestring_handle, timestamp_handle
         
         def show_success_msg():
             msg = QtWidgets.QMessageBox()
@@ -250,14 +252,26 @@ class Ui_MainWindow(object):
             choice = self.comboBox.currentText()
             preset = timestring_handle(choice)
             try:
-                logics.main(preset["api_from"], preset["api_to"])
+                logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"])
+                show_success_msg()
+            except Exception as ex:
+                print(ex)
+        
+        def get_report_from_timestamp():
+            from_choice = self.dateTimeEdit.text()
+            to_choice = self.dateTimeEdit_2.text()
+            preset = timestamp_handle(from_choice, to_choice)
+            try:
+                logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"])
                 show_success_msg()
             except Exception as ex:
                 print(ex)
             
         self.actionSettings_2.triggered.connect(settings.show_dialog)
         self.actionAbout.triggered.connect(about.show_dialog)
+        self.actionExit_2.triggered.connect(MainWindow.close)
         self.pushButton.clicked.connect(get_report)
+        self.pushButton_2.clicked.connect(get_report_from_timestamp)
 
 
 if __name__ == "__main__":

@@ -90,3 +90,19 @@ def timestring_handle(timestring):
         result["api_to"] = "now"
 
     return result
+
+def timestamp_handle(timestring_from, timestring_to):
+    def convert_to_timestamp(timestring):
+        date_object = datetime.datetime.strptime(timestring,"%d/%m/%Y %H:%M")
+        new_format = date_object.strftime("%B %d, %Y %H:%M")
+        timestamp = int(time.mktime(date_object.timetuple())) * 1000
+        return [timestamp, new_format]
+    time_from = convert_to_timestamp(timestring_from)
+    time_to = convert_to_timestamp(timestring_to)
+    result = {
+        "from": time_from[1],
+        "to": time_to[1],
+        "api_from": time_from[0],
+        "api_to": time_to[0]
+    }
+    return result
