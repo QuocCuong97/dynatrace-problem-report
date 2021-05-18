@@ -6,14 +6,15 @@ from openpyxl import Workbook
 from openpyxl.drawing.image import Image
 from openpyxl.styles import Alignment, Border, Font, Side
 
+import images_rc
 from common import load_from_json
 
 
-def main(start ,end, report_from, report_to):
+def main(api_from ,api_to, report_from, report_to):
     settings = load_from_json('settings.json')
 
     def get_list_problems():
-        output = requests.get(settings['dynatrace']['url'] + '/api/v2/problems?from={}&to={}&pageSize=500'.format(start, end), \
+        output = requests.get(settings['dynatrace']['url'] + '/api/v2/problems?from={}&to={}&pageSize=500'.format(api_from, api_to), \
                             headers={"Authorization": "Api-Token {}".format(settings['dynatrace']['api-token'])}).json()
         problems = output['problems']
         return problems
@@ -32,7 +33,7 @@ def main(start ,end, report_from, report_to):
         ws['A3'].border = Border(left=wbd, top=wbd, right=wbd, bottom=wbd)
         
         ws.merge_cells('B1:C3')
-        img = Image('img\logo_dynatrace_for_sheet.png')
+        img = Image('report.png')
         ws.add_image(img, 'B1')
         ws['B1'].border = Border(left=wbd, top=wbd, right=wbd)
         ws['C2'].border = Border(left=wbd, top=wbd, right=wbd)
@@ -128,8 +129,9 @@ def main(start ,end, report_from, report_to):
                 cell.value = cell_value
                 cell.alignment = Alignment(vertical="center", wrapText=True)
                 cell.border = Border(left=bd, top=bd, right=bd, bottom=bd)
-                
-        wb.save(filename=settings['output_file']['file_name_prefix'])
+        
+        file_ouput = settings['output_file']['output_folder'] + "/" + settings['output_file']['file_name_prefix'] + ".xlsx"
+        wb.save(filename=file_ouput)
 
     list_problems = get_list_problems()
     export_report(list_problems)

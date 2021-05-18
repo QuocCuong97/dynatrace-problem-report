@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="images">
+    <file>img/logo_folder.png</file>
+    <file>img/logo_app.png</file>
+    <file>img/logo_dynatrace.png</file>
+    <file>img/logo_dynatrace_for_sheet.png</file>
+    <file>img/logo_error.png</file>
+    <file>img/logo_exit.png</file>
+    <file>img/logo_export.jpg</file>
+    <file>img/logo_fis.png</file>
+    <file>img/logo_help.png</file>
+    <file>img/logo_info.png</file>
+    <file>img/logo_manual.png</file>
+    <file>img/made_by_fis.png</file>
+    <file>img/settings.png</file>
+  </qresource>
+</RCC>

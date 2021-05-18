@@ -16,10 +16,10 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.resize(455, 314)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\design\\../img/logo_info.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(":/images/img/logo_info.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         Dialog.setWindowIcon(icon)
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(10, 20, 71, 61))
+        self.label.setGeometry(QtCore.QRect(10, 20, 71, 71))
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap(".\\design\\../img/logo_app.png"))
         self.label.setScaledContents(True)
@@ -35,6 +35,12 @@ class Ui_Dialog(object):
         self.textBrowser.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.textBrowser.setMidLineWidth(-2)
         self.textBrowser.setObjectName("textBrowser")
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(300, 250, 131, 51))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/images/img/logo_fis.png"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -53,6 +59,7 @@ class Ui_Dialog(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">License:</span> GNU General Public License v3.0</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Author:</span> QuocCuong97 </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Contact:</span> cuongnq40@fpt.com.vn</p></body></html>"))
+import images_rc
 
 
 def show_dialog():

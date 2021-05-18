@@ -5,7 +5,7 @@
     },
     "output_file": {
         "title": "DYNATRACE PROBLEM REPORT",
-        "output_folder": "",
-        "file_name_prefix": "problem.xlsx"
+        "output_folder": "C:/Users/taikh/Desktop",
+        "file_name_prefix": "problem"
     }
 }

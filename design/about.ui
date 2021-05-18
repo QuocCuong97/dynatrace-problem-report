@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normalon>../img/logo_info.png</normalon>
+    <normalon>:/images/img/logo_info.png</normalon>
    </iconset>
   </property>
   <widget class="QLabel" name="label">
@@ -24,7 +24,7 @@
      <x>10</x>
      <y>20</y>
      <width>71</width>
-     <height>61</height>
+     <height>71</height>
     </rect>
    </property>
    <property name="text">
@@ -82,7 +82,28 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Contact:&lt;/span&gt; cuongnq40@fpt.com.vn&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>250</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../images.qrc">:/images/img/logo_fis.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
  <connections/>
 </ui>

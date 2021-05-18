@@ -22,9 +22,10 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         MainWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\design\\../img/logo_app.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(":/images/img/logo_app.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         MainWindow.setWindowIcon(icon)
         MainWindow.setAutoFillBackground(False)
+        MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
@@ -74,7 +75,7 @@ class Ui_MainWindow(object):
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.label_4 = QtWidgets.QLabel(self.tab_1)
-        self.label_4.setGeometry(QtCore.QRect(170, 130, 51, 21))
+        self.label_4.setGeometry(QtCore.QRect(170, 130, 51, 31))
         font = QtGui.QFont()
         font.setPointSize(9)
         font.setBold(True)
@@ -83,13 +84,16 @@ class Ui_MainWindow(object):
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.pushButton = QtWidgets.QPushButton(self.tab_1)
-        self.pushButton.setGeometry(QtCore.QRect(250, 190, 91, 41))
+        self.pushButton.setGeometry(QtCore.QRect(250, 190, 111, 41))
         font = QtGui.QFont()
         font.setPointSize(9)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
         self.pushButton.setFont(font)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/images/img/logo_export.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon1)
         self.pushButton.setObjectName("pushButton")
         self.tabWidget.addTab(self.tab_1, "")
         self.tab_2 = QtWidgets.QWidget()
@@ -139,7 +143,7 @@ class Ui_MainWindow(object):
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
         self.pushButton_2 = QtWidgets.QPushButton(self.tab_2)
-        self.pushButton_2.setGeometry(QtCore.QRect(240, 200, 91, 41))
+        self.pushButton_2.setGeometry(QtCore.QRect(230, 200, 111, 41))
         font = QtGui.QFont()
         font.setPointSize(9)
         font.setBold(True)
@@ -147,25 +151,34 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_2.setFont(font)
         self.pushButton_2.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.pushButton_2.setIcon(icon1)
         self.pushButton_2.setObjectName("pushButton_2")
         self.tabWidget.addTab(self.tab_2, "")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(300, 10, 211, 61))
+        self.label_2.setGeometry(QtCore.QRect(310, 10, 211, 61))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap(".\\design\\../img/logo_dynatrace.png"))
+        self.label_2.setPixmap(QtGui.QPixmap(":/images/img/logo_dynatrace.png"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(340, 70, 161, 16))
+        self.line.setGeometry(QtCore.QRect(350, 70, 151, 20))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(330, 440, 161, 31))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/images/img/made_by_fis.png"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 826, 26))
         self.menubar.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.menubar.setObjectName("menubar")
         self.menuHelp = QtWidgets.QMenu(self.menubar)
+        self.menuHelp.setSeparatorsCollapsible(False)
+        self.menuHelp.setToolTipsVisible(False)
         self.menuHelp.setObjectName("menuHelp")
         self.menuSettings = QtWidgets.QMenu(self.menubar)
         self.menuSettings.setObjectName("menuSettings")
@@ -178,15 +191,34 @@ class Ui_MainWindow(object):
         self.actionExit = QtWidgets.QAction(MainWindow)
         self.actionExit.setObjectName("actionExit")
         self.actionSettings_2 = QtWidgets.QAction(MainWindow)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/images/img/settings.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionSettings_2.setIcon(icon2)
         self.actionSettings_2.setObjectName("actionSettings_2")
         self.actionExit_2 = QtWidgets.QAction(MainWindow)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/images/img/logo_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(":/images/C:/Users/taikh/Documents/Code/img/logo_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.actionExit_2.setIcon(icon3)
         self.actionExit_2.setObjectName("actionExit_2")
         self.actionManual = QtWidgets.QAction(MainWindow)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/images/img/logo_manual.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.actionManual.setIcon(icon4)
         self.actionManual.setObjectName("actionManual")
         self.actionAbout = QtWidgets.QAction(MainWindow)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/images/img/logo_info.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionAbout.setIcon(icon5)
         self.actionAbout.setObjectName("actionAbout")
+        self.actionOpen_Ouput_Folder = QtWidgets.QAction(MainWindow)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/images/img/logo_folder.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.actionOpen_Ouput_Folder.setIcon(icon6)
+        self.actionOpen_Ouput_Folder.setObjectName("actionOpen_Ouput_Folder")
         self.menuHelp.addAction(self.actionManual)
         self.menuHelp.addAction(self.actionAbout)
+        self.menuSettings.addAction(self.actionOpen_Ouput_Folder)
         self.menuSettings.addAction(self.actionSettings_2)
         self.menuSettings.addAction(self.actionExit_2)
         self.menubar.addAction(self.menuHelp.menuAction())
@@ -231,12 +263,16 @@ class Ui_MainWindow(object):
         self.actionSettings_2.setText(_translate("MainWindow", "Settings"))
         self.actionExit_2.setText(_translate("MainWindow", "Exit"))
         self.actionManual.setText(_translate("MainWindow", "Manual"))
+        self.actionManual.setIconText(_translate("MainWindow", "Manual"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
+        self.actionOpen_Ouput_Folder.setText(_translate("MainWindow", "Open Ouput Folder"))
 
     def methods(self):
-        import settings, about, logics
-        from common import timestring_handle, timestamp_handle
+        import settings, about, manual, logics
+        from common import timestring_handle, timestamp_handle, load_from_json
         
+        self.error_message = ""
+
         def show_success_msg():
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Information)
@@ -248,14 +284,26 @@ class Ui_MainWindow(object):
             msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
             msg.exec_()
 
-        def get_report():
+        def show_error_msg():
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap(".\\design\\../img/logo_info.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+            msg.setWindowIcon(icon)
+            msg.setWindowTitle("Error")
+            msg.setText(self.error_message)
+            msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+            msg.exec_()
+
+        def get_report_from_preset():
             choice = self.comboBox.currentText()
             preset = timestring_handle(choice)
             try:
                 logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"])
                 show_success_msg()
             except Exception as ex:
-                print(ex)
+                self.error_message = str(ex)
+                show_error_msg()
         
         def get_report_from_timestamp():
             from_choice = self.dateTimeEdit.text()
@@ -265,13 +313,27 @@ class Ui_MainWindow(object):
                 logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"])
                 show_success_msg()
             except Exception as ex:
-                print(ex)
-            
+                self.error_message = str(ex)
+                show_error_msg()
+        
+        def open_output_folder():
+            import os
+            output_folder = load_from_json("settings.json")["output_file"]["output_folder"]
+            try:
+                os.startfile(output_folder)
+            except Exception as ex:
+                self.error_message = str(ex)
+                show_error_msg()
+
+        self.actionOpen_Ouput_Folder.triggered.connect(open_output_folder)
         self.actionSettings_2.triggered.connect(settings.show_dialog)
         self.actionAbout.triggered.connect(about.show_dialog)
+        self.actionManual.triggered.connect(manual.show_dialog)
         self.actionExit_2.triggered.connect(MainWindow.close)
-        self.pushButton.clicked.connect(get_report)
+        self.pushButton.clicked.connect(get_report_from_preset)
         self.pushButton_2.clicked.connect(get_report_from_timestamp)
+
+import images_rc
 
 
 if __name__ == "__main__":
