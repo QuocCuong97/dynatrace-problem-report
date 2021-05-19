@@ -1,11 +1,11 @@
 {
     "dynatrace": {
-        "url": "https://mpu981.dynatrace-managed.com/e/553057c0-b8c9-48a8-8c2c-cbb38e61015b",
-        "api-token": "QWoUsJg-RFGJrYO6zX22k"
+        "url": "",
+        "api-token": ""
     },
     "output_file": {
         "title": "DYNATRACE PROBLEM REPORT",
-        "output_folder": "C:/Users/taikh/Desktop",
+        "output_folder": "",
         "file_name_prefix": "problem"
     }
 }

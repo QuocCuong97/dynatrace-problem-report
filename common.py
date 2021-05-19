@@ -1,6 +1,7 @@
+import datetime
 import json
 import time
-import datetime
+
 
 def export_to_json(material, json_file):
     output = json.dumps(material, indent=4, ensure_ascii=False)
@@ -87,7 +88,7 @@ def timestring_handle(timestring):
         result["api_to"] = "now"
 
     if timestring == "Last 7 days":
-        preset = today - datetime.timedelta(days=1)
+        preset = today - datetime.timedelta(days=7)
         result["from"] = preset.strftime("%B %d, %Y %H:%M")
         result["to"] = now.strftime("%B %d, %Y %H:%M")
         result["api_from"] = "now-7d"

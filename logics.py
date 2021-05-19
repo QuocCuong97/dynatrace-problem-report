@@ -6,7 +6,7 @@ from openpyxl import Workbook
 from openpyxl.drawing.image import Image
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 
-from common import load_from_json, convert_to_date_object
+from common import convert_to_date_object, load_from_json
 
 
 def main(api_from ,api_to, report_from, report_to, sort):

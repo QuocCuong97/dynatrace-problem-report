@@ -14,12 +14,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(645, 439)
+        Dialog.resize(649, 480)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/img/logo_manual.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Dialog.setWindowIcon(icon)
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(260, 20, 131, 51))
+        self.label.setGeometry(QtCore.QRect(280, 0, 131, 51))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -29,10 +29,28 @@ class Ui_Dialog(object):
         self.label.setWordWrap(False)
         self.label.setObjectName("label")
         self.line = QtWidgets.QFrame(Dialog)
-        self.line.setGeometry(QtCore.QRect(240, 60, 161, 16))
+        self.line.setGeometry(QtCore.QRect(240, 40, 161, 16))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
+        self.textBrowser = QtWidgets.QTextBrowser(Dialog)
+        self.textBrowser.setGeometry(QtCore.QRect(20, 60, 611, 401))
+        self.textBrowser.setObjectName("textBrowser")
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(130, 220, 381, 131))
+        font = QtGui.QFont()
+        font.setPointSize(5)
+        self.label_2.setFont(font)
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/images/img/manual_1.png"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(230, 10, 41, 31))
+        self.label_3.setText("")
+        self.label_3.setPixmap(QtGui.QPixmap(":/images/img/logo_manual.png"))
+        self.label_3.setScaledContents(True)
+        self.label_3.setObjectName("label_3")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -41,6 +59,33 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "User Manual"))
         self.label.setText(_translate("Dialog", "USER MANUAL"))
+        self.textBrowser.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; font-weight:600;\">Dynatrace URL format</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\">- Managed:                </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-style:italic; color:#0f1419; background-color:#ffffff;\">https://{your-domain}/e/{your-environment-id}</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\">- SaaS:                     </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-style:italic; color:#0f1419; background-color:#ffffff;\">https://{your-environment-id}.live.dynatrace.com</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\">- Cluster ActiveGate:  </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-style:italic; color:#0f1419; background-color:#ffffff;\">https://{your-activegate-domain}/e/{your-environment-id}</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-style:italic; color:#0f1419;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:9pt; font-weight:600; color:#0f1419; background-color:#ffffff;\">Token API</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-weight:600; color:#0f1419; background-color:#ffffff;\">- </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\">Select </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-weight:600; font-style:italic; color:#0f1419; background-color:#ffffff;\">Settings</span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\"> -&gt;</span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-weight:600; font-style:italic; color:#0f1419; background-color:#ffffff;\">Integration</span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\"> -&gt; </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-weight:600; font-style:italic; color:#0f1419; background-color:#ffffff;\">Dynatrace API</span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\"> -&gt; </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-weight:600; font-style:italic; color:#0f1419; background-color:#ffffff;\">Generate Token</span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\"> -&gt; Enter name for your token -&gt; Select </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-weight:600; font-style:italic; color:#0f1419; background-color:#ffffff;\">Read problems</span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\"> (API v2) permission -&gt; </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-weight:600; font-style:italic; color:#0f1419; background-color:#ffffff;\">Generate</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-weight:600; font-style:italic; color:#0f1419; background-color:#ffffff;\">- </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\">Copy your token</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:9pt; font-weight:600; color:#0f1419; background-color:#ffffff;\">Title</span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-weight:600; color:#0f1419; background-color:#ffffff;\"> </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\">: Title for report</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:9pt; font-weight:600; color:#0f1419; background-color:#ffffff;\">Output Folder</span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\">: Folder where stores reports</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:9pt; font-weight:600; color:#0f1419; background-color:#ffffff;\">File name prefix</span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\">:   Customize your output file name follow the format:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; color:#0f1419; background-color:#ffffff;\">      </span><span style=\" font-family:\'BerninaSans\',\'Open Sans\',\'sans-serif\'; font-size:8pt; font-style:italic; color:#0f1419; background-color:#ffffff;\">{file-name-prefix}_{from}_{to}.xlsx</span></p></body></html>"))
 import images_rc
 
 
