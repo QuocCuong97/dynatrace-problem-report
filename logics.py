@@ -13,6 +13,12 @@ def main(api_from ,api_to, report_from, report_to, sort):
     settings = load_from_json('settings.json')
 
     def get_list_problems():
+        if settings['dynatrace']['url'] == "" and settings['dynatrace']['api-token'] == "":
+            raise Exception("Please configure your Dynatrace URL and Token API!")
+        if settings['dynatrace']['url'] == "" and settings['dynatrace']['api-token'] != "":
+            raise Exception("Please configure your Dynatrace URL!")
+        if settings['dynatrace']['url'] != "" and settings['dynatrace']['api-token'] == "":
+            raise Exception("Please configure your Token API!")
         output = requests.get(settings['dynatrace']['url'] + '/api/v2/problems?from={}&to={}&sort={}&pageSize=500'.format(api_from, api_to, sort), \
                             headers={"Authorization": "Api-Token {}".format(settings['dynatrace']['api-token'])}).json()
         problems = output['problems']
@@ -32,7 +38,7 @@ def main(api_from ,api_to, report_from, report_to, sort):
         ws['A3'].border = Border(left=wbd, top=wbd, right=wbd, bottom=wbd)
         
         ws.merge_cells('B1:C3')
-        img = Image('report.png')
+        img = Image('dynatrace.png')
         ws.add_image(img, 'B1')
         ws['B1'].border = Border(left=wbd, top=wbd, right=wbd)
         ws['C2'].border = Border(left=wbd, top=wbd, right=wbd)
