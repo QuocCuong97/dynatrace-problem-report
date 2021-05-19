@@ -268,10 +268,12 @@ class Ui_MainWindow(object):
         self.actionOpen_Ouput_Folder.setText(_translate("MainWindow", "Open Ouput Folder"))
 
     def methods(self):
+        import os
         import settings, about, manual, logics
         from common import timestring_handle, timestamp_handle, load_from_json
         
         self.error_message = ""
+        self.output_file = ""
 
         def show_success_msg():
             msg = QtWidgets.QMessageBox()
@@ -281,7 +283,9 @@ class Ui_MainWindow(object):
             msg.setWindowIcon(icon)
             msg.setWindowTitle("Info")
             msg.setText("Export successfully!")
-            msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+            msg.addButton(QtWidgets.QMessageBox.Ok)
+            open_file_button = msg.addButton("Open File", msg.ActionRole)
+            open_file_button.clicked.connect(open_output_file)
             msg.exec_()
 
         def show_error_msg():
@@ -296,10 +300,14 @@ class Ui_MainWindow(object):
             msg.exec_()
 
         def get_report_from_preset():
-            choice = self.comboBox.currentText()
-            preset = timestring_handle(choice)
+            time_choice = self.comboBox.currentText()
+            sort_choice = self.comboBox_2.currentText()
+            preset = timestring_handle(time_choice)
             try:
-                logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"])
+                if sort_choice == "Newest":
+                    self.output_file = logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"], "-startTime")
+                else:
+                    self.output_file = logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"], "+startTime")
                 show_success_msg()
             except Exception as ex:
                 self.error_message = str(ex)
@@ -308,22 +316,28 @@ class Ui_MainWindow(object):
         def get_report_from_timestamp():
             from_choice = self.dateTimeEdit.text()
             to_choice = self.dateTimeEdit_2.text()
+            sort_choice = self.comboBox_3.currentText()
             preset = timestamp_handle(from_choice, to_choice)
             try:
-                logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"])
+                if sort_choice == "Newest":
+                    self.output_file = logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"], "-startTime")
+                else:
+                    self.output_file = logics.main(preset["api_from"], preset["api_to"], preset["from"], preset["to"], "+startTime")
                 show_success_msg()
             except Exception as ex:
                 self.error_message = str(ex)
                 show_error_msg()
         
         def open_output_folder():
-            import os
             output_folder = load_from_json("settings.json")["output_file"]["output_folder"]
             try:
                 os.startfile(output_folder)
             except Exception as ex:
                 self.error_message = str(ex)
                 show_error_msg()
+
+        def open_output_file():
+            os.startfile(self.output_file)
 
         self.actionOpen_Ouput_Folder.triggered.connect(open_output_folder)
         self.actionSettings_2.triggered.connect(settings.show_dialog)

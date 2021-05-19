@@ -14,6 +14,17 @@ def load_from_json(json_file):
     dic = json.loads(data)
     return dic
 
+def convert_to_timestamp(timestring):
+    date_object = datetime.datetime.strptime(timestring,"%d/%m/%Y %H:%M")
+    new_format = date_object.strftime("%B %d, %Y %H:%M")
+    timestamp = int(time.mktime(date_object.timetuple())) * 1000
+    return [timestamp, new_format]
+
+def convert_to_date_object(timestring):
+    date_object = datetime.datetime.strptime(timestring,"%B %d, %Y %H:%M")
+    new_format = date_object.strftime("%Y%m%d")
+    return new_format
+
 def timestring_handle(timestring):
     today = datetime.date.today()
     now = datetime.datetime.now()
@@ -21,17 +32,17 @@ def timestring_handle(timestring):
 
     if timestring == "Yesterday":
         preset = today - datetime.timedelta(days=1)
-        result["from"] = preset.strftime("%B %d, %Y")
-        result["to"] = result["from"]
-        result["api_from"] = "now-1d"
-        result["api_to"] = "now-1d"
+        result["from"] = preset.strftime("%B %d, %Y 00:00")
+        result["to"] = preset.strftime("%B %d, %Y 23:59")
+        result["api_from"] = convert_to_timestamp(preset.strftime("%d/%m/%Y 00:00"))[0]
+        result["api_to"] = convert_to_timestamp(preset.strftime("%d/%m/%Y 23:59"))[0]
 
     if timestring == "Today":
         preset = today
-        result["from"] = preset.strftime("%B %d, %Y")
-        result["to"] = result["from"]
-        result["api_from"] = "now-0d"
-        result["api_to"] = "now"
+        result["from"] = preset.strftime("%B %d, %Y 00:00")
+        result["to"] = now.strftime("%B %d, %Y %H:%M")
+        result["api_from"] = convert_to_timestamp(preset.strftime("%d/%m/%Y 00:00"))[0]
+        result["api_to"] = convert_to_timestamp(now.strftime("%d/%m/%Y %H:%M"))[0]
 
     if timestring == "Last 30 minutes":
         preset = now - datetime.timedelta(minutes=30)
@@ -92,11 +103,6 @@ def timestring_handle(timestring):
     return result
 
 def timestamp_handle(timestring_from, timestring_to):
-    def convert_to_timestamp(timestring):
-        date_object = datetime.datetime.strptime(timestring,"%d/%m/%Y %H:%M")
-        new_format = date_object.strftime("%B %d, %Y %H:%M")
-        timestamp = int(time.mktime(date_object.timetuple())) * 1000
-        return [timestamp, new_format]
     time_from = convert_to_timestamp(timestring_from)
     time_to = convert_to_timestamp(timestring_to)
     result = {

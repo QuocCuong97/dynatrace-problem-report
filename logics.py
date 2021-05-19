@@ -4,17 +4,16 @@ from datetime import datetime
 import requests
 from openpyxl import Workbook
 from openpyxl.drawing.image import Image
-from openpyxl.styles import Alignment, Border, Font, Side
+from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 
-import images_rc
-from common import load_from_json
+from common import load_from_json, convert_to_date_object
 
 
-def main(api_from ,api_to, report_from, report_to):
+def main(api_from ,api_to, report_from, report_to, sort):
     settings = load_from_json('settings.json')
 
     def get_list_problems():
-        output = requests.get(settings['dynatrace']['url'] + '/api/v2/problems?from={}&to={}&pageSize=500'.format(api_from, api_to), \
+        output = requests.get(settings['dynatrace']['url'] + '/api/v2/problems?from={}&to={}&sort={}&pageSize=500'.format(api_from, api_to, sort), \
                             headers={"Authorization": "Api-Token {}".format(settings['dynatrace']['api-token'])}).json()
         problems = output['problems']
         return problems
@@ -45,7 +44,24 @@ def main(api_from ,api_to, report_from, report_to):
         ws['D1'].alignment = Alignment(horizontal='center', vertical="center")
         ws['D1'] = settings['output_file']['title']
         ws['D1'].border = Border(left=wbd, top=wbd, right=wbd)
+        redFill = PatternFill(start_color='0099CCFF',
+                   end_color='0099CCFF',
+                   fill_type='solid')
         ws.row_dimensions[1].height = 25
+        ws.row_dimensions[5].height = 20
+        ws['A5'].fill = redFill
+        ws['B5'].fill = redFill
+        ws['C5'].fill = redFill
+        ws['D5'].fill = redFill
+        ws['E5'].fill = redFill
+        ws['F5'].fill = redFill
+        ws['G5'].fill = redFill
+        ws['H5'].fill = redFill
+        ws['I5'].fill = redFill
+        ws['J5'].fill = redFill
+        ws['K5'].fill = redFill
+        ws['L5'].fill = redFill
+        
         
         ws.merge_cells('D3:L3')
         ws['D3'].font = Font(bold=True, italic=True)
@@ -130,8 +146,16 @@ def main(api_from ,api_to, report_from, report_to):
                 cell.alignment = Alignment(vertical="center", wrapText=True)
                 cell.border = Border(left=bd, top=bd, right=bd, bottom=bd)
         
-        file_ouput = settings['output_file']['output_folder'] + "/" + settings['output_file']['file_name_prefix'] + ".xlsx"
+        file_ouput = settings['output_file']['output_folder'] + "/" + \
+                     settings['output_file']['file_name_prefix'] +  \
+                         "_" + convert_to_date_object(report_from) + "_" + \
+                             convert_to_date_object(report_to) + ".xlsx"
         wb.save(filename=file_ouput)
+        return file_ouput
 
     list_problems = get_list_problems()
-    export_report(list_problems)
+    if len(list_problems) != 0:
+        output = export_report(list_problems)
+        return output
+    else:
+        raise Exception("No problems found!")
