@@ -9,8 +9,8 @@
         - SaaS : `https://{your-environment-id}.live.dynatrace.com`
         - ActiveGate : `https://{your-activegate-domain}/e/{your-environment-id}`
 - **Token API**
-    - We need to creat an API token to authorize with APi. To do that, follow these steps :
-        - Select **Settings** in the navigation menu.
+    - We need to creat an API token to authorize with API. To do that, follow these steps :
+        - Select **Settings** in the navigation menu (in **Environment**).
         - Go to **Integration** > **Dynatrace API**.
         - Select **Generate token**.
         - Enter a name for your token.
